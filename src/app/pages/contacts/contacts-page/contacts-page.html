@@ -1,0 +1,13 @@
+<div class="row vh-100">
+    <div
+      class="col-12 col-md-4 border-end overflow-auto bg-custom contact-list-wrapper p-0"
+      [class.d-none]="isMobile && isDetailRoute">
+      <app-contact-list></app-contact-list>
+    </div>
+    <div
+      class="col-12 col-md-8 overflow-auto"
+      [class.d-none]="isMobile && !isDetailRoute">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+

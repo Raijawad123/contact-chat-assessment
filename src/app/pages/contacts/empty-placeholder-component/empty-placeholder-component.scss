@@ -1,0 +1,27 @@
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; // Full height of parent container
+  min-height: 300px;
+}
+
+.svg-wrapper img {
+  max-width: 200px;
+  height: auto;
+}
+
+.placeholder-heading {
+  font-weight: 600;
+}
+
+.placeholder-subheading {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.placeholder-description {
+  font-size: 0.875rem;
+  max-width: 400px;
+}

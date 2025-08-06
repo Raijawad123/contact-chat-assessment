@@ -1,0 +1,42 @@
+.right-card-menu {
+  margin-top: 6%;
+  padding: 0 10rem 0 10rem;
+}
+
+.btn-custom {
+  background-color: #6B59CC;
+  color: #fff;
+  padding: 10px;
+  width: 8rem;
+}
+
+.custom-icons {
+  border: 0.1rem solid rgba(128, 131, 163, 0.3); /* 30% opacity */
+  padding: 10px;
+  cursor: pointer;
+}
+
+.label-text {
+  color: #8083A3;
+  line-height: 40px;
+}
+
+.label-value {
+  line-height: 40px;
+}
+
+.primary-label-text {
+  color: #8083A3;
+  width: 75px;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  background-color: #F3F4F9;
+}
+
+@media (max-width: 768px) {
+  .right-card-menu {
+    padding: 0 !important;
+  }
+}
+

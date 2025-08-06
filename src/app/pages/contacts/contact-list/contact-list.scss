@@ -1,0 +1,83 @@
+.hamburger-icon {
+  background-color: white;
+  padding: 7px;
+  border-radius: 10px;
+  border: 0.04rem solid rgba(128, 131, 163, 0.3); /* 30% opacity */
+}
+
+.custom-icons {
+  border: 0.1rem solid rgba(128, 131, 163, 0.3); /* 30% opacity */
+  padding: 8px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.custom-sub-heading {
+  color: #8083A3;
+  font-size: 12px;
+}
+
+.selected-icon {
+  border: 0.1rem solid rgba(128, 131, 163, 0.3); /* 30% opacity */
+  padding: 8px;
+  cursor: pointer;
+  background-color: #EEEFF7 !important;
+}
+
+.custom-heading {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  width: 12px;
+  top: 35px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white; /* Optional: adds a white border to stand out */
+}
+
+.bg-success {
+  background-color: #28C245;
+}
+
+.bg-warning {
+  background-color: #F6933E;
+}
+
+.contact-container:hover {
+  background-color: #F3F4F9;
+}
+
+.contacts-top {
+  padding: 15px 20px 15px 25px;
+}
+
+.icon-svg {
+  border: 0.1rem solid rgba(128, 131, 163, 0.3);
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 25%;
+  cursor: pointer;
+}
+
+.icon-svg path {
+  fill: #8083A3;
+}
+
+.selected-icon {
+  border: 0.1rem solid rgba(128, 131, 163, 0.3);
+  padding: 8px;
+  background-color: #EEEFF7 !important;
+}
+
+.selected-icon path {
+  fill: #6B59CC !important;
+}
+
+

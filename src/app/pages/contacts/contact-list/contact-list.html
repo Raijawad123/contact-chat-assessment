@@ -1,0 +1,112 @@
+@if (isLoading) {
+  <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+} @else {
+  <div>
+    <div class="d-flex justify-content-between align-items-center contacts-top">
+      <div class="d-flex flex-row align-items-center mt-3">
+        <!--        <img src="assets/images/hamburger-menu.svg" width="38" height="40" alt="Hamburger Icon">-->
+        <!-- Tried loading SVG using image tag bit it was not working -->
+        <svg class="hamburger-icon mb-2" width="38px" height="40px" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18L20 18" stroke="#8083A3" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M4 12L20 12" stroke="#8083A3" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M4 6L20 6" stroke="#8083A3" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <h5 class="fw-bold ms-3">Contacts</h5>
+      </div>
+      <div class="d-flex justify-content-end mt-2 gap-2">
+        <svg class="hamburger-icon" width="38px" height="40px" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 6L9 12L15 18" stroke="#8083A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="hamburger-icon" width="38px" height="40px" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 6L15 12L9 18" stroke="#8083A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="p-4 mb-1 border-top">
+      <div class="mb-3">
+        <h6 class="custom-sub-heading">Search for a contact</h6>
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="custom-heading">Name, Email or phone number</h5>
+          <svg class="me-2" width="15px" height="15px" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+      @for (contact of contacts; track contact.id) {
+        <div
+          class="d-flex align-items-center justify-content-between mb-4 rounded contact-container"
+          (click)="select(contact)"
+          role="button"
+        >
+          <div class="d-flex align-items-center">
+            <div class="position-relative">
+              <img [src]="contact.avatar"
+                   class="rounded-2 me-2"
+                   width="40"
+                   height="40"
+                   alt="avatar"
+              />
+              <span
+                class="status-dot"
+                [ngClass]="{
+            'bg-success': contact.status === 'online',
+            'bg-warning': contact.status === 'offline'
+          }"
+              ></span>
+            </div>
+            <div class="ms-1">
+              <div class="fw-bold">{{ contact.firstName }} {{ contact.lastName }}</div>
+              <small class="text-muted custom-sub-heading">{{ contact.jobTitle }}</small>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <svg [ngClass]="{'icon-svg': true,'selected-icon': selectedContactId === contact.id}"
+                 viewBox="0 0 32 32"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M25.042 18.672v-12.487c0-1.234-1-2.236-2.236-2.236h-19.571c-1.235-0.001-2.236 1.001-2.236 2.236v12.487c0 1.235 1.001 2.236 2.236 2.236h3.729v5.137l5.704-5.137h10.137c1.237 0 2.237-1.001 2.237-2.236zM28.765 8.858h-2.798c0 0 0 9.972 0 10.909s-1.216 2.142-2.153 2.142-10.945 0.055-10.945 0.055c0 1.235 1.001 1.986 2.236 1.986h4.309l5.622 5.102-0.007-5.102h3.736c1.236 0 2.236-0.751 2.236-1.986v-10.932c0-1.234-1-2.174-2.236-2.174z"></path>
+            </svg>
+            <svg
+              [ngClass]="{'icon-svg': true,'selected-icon': selectedContactId === contact.id}"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z"></path>
+            </svg>
+            <svg
+              [ngClass]="{'icon-svg': true,'selected-icon': selectedContactId === contact.id}" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z"
+              ></path>
+              <path
+                d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+              ></path>
+              <path
+                d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}
+
+
